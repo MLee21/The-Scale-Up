@@ -8,10 +8,6 @@ class Admin < ActiveRecord::Base
     true
   end
 
-  def activated?
-    true
-  end
-
   def suspended?
     false
   end

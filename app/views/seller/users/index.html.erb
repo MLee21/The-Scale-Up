@@ -31,9 +31,6 @@
               class: "store-address-link" %>
           </td>
         </tr>
-        <tr>
-          <td><strong>Activated at:</strong><br /><%= @user.activated_at.strftime("%e %b %Y %H:%M:%S%p") %></td>
-        </tr>
       </table>
       <%= link_to "Edit User Profile", edit_user_path(@user), class: "btn btn-sm btn-default user-edit-btn" %>
 

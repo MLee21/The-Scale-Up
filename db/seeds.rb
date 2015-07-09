@@ -311,9 +311,7 @@ class Seed
         city:                  Faker::Address.city,
         state:                 Faker::Address.state,
         zipcode:               Faker::Address.zip_code,
-        display_name:          Faker::Internet.user_name,
-        activated:             true,
-        activated_at:          Time.zone.now
+        display_name:          Faker::Internet.user_name
         )
       puts "User #{i}: #{user.display_name} created!"
     end
@@ -327,9 +325,7 @@ class Seed
         city:                  "Denver",
         state:                 "CO",
         zipcode:               80203,
-        display_name:          "rwarbelow",
-        activated:             true,
-        activated_at:          Time.zone.now },
+        display_name:          "rwarbelow"},
       { full_name:             "Jeff Casimir",
         email:                 "demo+jeff@example.com",
         password:              "password",
@@ -339,9 +335,7 @@ class Seed
         city:                  "Denver",
         state:                 "CO",
         zipcode:               80203,
-        display_name:          "j3",
-        activated:             true,
-        activated_at:          Time.zone.now },
+        display_name:          "j3"},
       { full_name:             "Jorge Tellez",
         email:                 "demo+jorge@example.com",
         password:              "password",
@@ -351,9 +345,7 @@ class Seed
         city:                  "Denver",
         state:                 "CO",
         zipcode:               80203,
-        display_name:          "novohispano",
-        activated:             true,
-        activated_at:          Time.zone.now },
+        display_name:          "novohispano"},
       { full_name:             "Bill Gates",
         email:                 "bill@gates.com",
         password:              "password",
@@ -362,9 +354,7 @@ class Seed
         city:                  "Seattle",
         state:                 "WA",
         zipcode:               90329,
-        display_name:          "thebillgates",
-        activated:             true,
-        activated_at:          Time.zone.now },
+        display_name:          "thebillgates"},
       { full_name:             "Taylor Swift",
         email:                 "taytay@swift.com",
         password:              "password",
@@ -374,9 +364,7 @@ class Seed
         city:                  "Denver",
         state:                 "CO",
         zipcode:               80203,
-        display_name:          "taylorswift13",
-        activated:             true,
-        activated_at:          Time.zone.now },
+        display_name:          "taylorswift13"},
     ])
   end
 

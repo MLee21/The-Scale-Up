@@ -55,8 +55,6 @@ describe "the user" do
     fill_in "user[password]", with: user.password
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
-
-    expect(page).to have_content("Please check your email")
   end
 
   it "cannot create an account with invalid credentials" do
@@ -134,13 +132,12 @@ describe "the user" do
     click_button("Create my account!")
 
     expect(current_path).to eq root_path
-    expect(page).to have_content("check your email")
   end
 
   it "is redirected to the order summary after login from checkout" do
     event = create(:event)
     seller = create(:user)
-    item = create(:item, event: event, user_id: seller.id)
+    create(:item, event: event, user_id: seller.id)
     user= create(:user)
     visit event_path(event)
     click_button("Add to cart")
@@ -157,7 +154,7 @@ describe "the user" do
   it "is redirected to review order when sign up from checkout" do
     event = create(:event)
     seller = create(:user)
-    item = create(:item, event: event, user_id: seller.id)
+    create(:item, event: event, user_id: seller.id)
     user= build(:user)
     visit event_path(event)
     click_button("Add to cart")
@@ -177,7 +174,6 @@ describe "the user" do
     click_button("Create my account!")
 
     expect(current_path).to eq root_path
-    expect(page).to have_content("check your email")
   end
 
   it "sees a Logout button instead of Login " do
@@ -212,7 +208,7 @@ describe "the user" do
   it "sees a review order page after clicking checkout" do
     mock_user
     event = create(:event)
-    item = create(:item, event_id: event.id)
+    create(:item, event_id: event.id)
     visit event_path(event)
     click_link_or_button("Add to cart")
 

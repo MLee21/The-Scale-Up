@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessor :activation_token
-
   has_secure_password
 
   has_many :items
@@ -9,7 +7,6 @@ class User < ActiveRecord::Base
 
   before_validation :generate_slug
   before_save       :downcase_email
-  before_create     :create_activation_digest
 
   validates :full_name, presence: true, length: { in: 5..100 },
                         format: { with: /\A[a-z ,.\'-]+\z/i, }
@@ -24,8 +21,7 @@ class User < ActiveRecord::Base
                            exclusion: { in: %w(login logout tickets admin venue
                                                venues cart remove_item
                                                update_item events event orders
-                                               order account_activation
-                                               account_activations),
+                                               order),
                              message: "%{value} is reserved." }
   validates :street_1, :city, :state, :zipcode, presence: true
   validates :slug, uniqueness: true
@@ -81,10 +77,5 @@ class User < ActiveRecord::Base
 
     def downcase_email
       self.email = self.email.downcase
-    end
-
-    def create_activation_digest
-      self.activation_token  = User.new_token
-      self.activation_digest = User.digest(activation_token)
     end
 end

@@ -13,15 +13,11 @@ class SessionsController < ApplicationController
         flash[:errors] = "Sorry, your account is suspended. \
                            Please contact site administrator."
         redirect_to root_url
-      elsif visitor.activated?
+      else
         session[:user_id] = visitor.id
         session[:admin] = visitor.admin?
         flash[:success] = "Successfully logged in!"
         session[:forward_to] ? redirect_forward : redirect_after_login
-      else
-        flash[:warning] = "Account not activated. \
-                           Check your email for the activation link."
-        redirect_to root_url
       end
     else
       flash[:errors] = "Invalid Login"

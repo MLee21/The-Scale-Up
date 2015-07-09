@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :events, only: [:show]
   resources :orders, only: [:show, :new, :create, :index]
-  resources :account_activations, only: [:edit]
 
   scope "admin", module: "admin", as: "admin" do
     post "/orders/:status" => "orders#filter", as: "filter_order"

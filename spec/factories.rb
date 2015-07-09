@@ -33,8 +33,6 @@ FactoryGirl.define do
     state "OR"
     zipcode 97222
     display_name
-    activated true
-    activated_at Time.zone.now
   end
 
   factory :image do

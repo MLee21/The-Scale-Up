@@ -7,7 +7,7 @@ describe "the user signup" do
     ActionMailer::Base.deliveries.clear
   end
 
-  it "with valid signup information and account activation" do
+  it "with valid signup information" do
     visit root_path
     click_link("Sign up")
 
@@ -24,16 +24,11 @@ describe "the user signup" do
                              }
     end.to change { User.count }
 
-    expect(ActionMailer::Base.deliveries.size).to eq(1)
     user = assigns(:user)
-    expect(user.activated?).to be_falsey
     visit login_path
     fill_in "session[email]", with: user.email
     fill_in "session[password]", with: user.password
     click_link_or_button("Log in")
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("Check your email")
-    get edit_account_activation_path(user.activation_token, email: user.email)
-    expect(user.reload.activated?).to be_truthy
   end
 end
