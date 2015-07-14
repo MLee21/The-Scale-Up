@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'skylight'
 gem 'populator'
+gem 'capybara'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -36,7 +37,6 @@ group :production do
 end
 
 group :test do 
-  gem 'capybara'
   gem 'rspec-rails'
   gem 'launchy'
   gem 'poltergeist'

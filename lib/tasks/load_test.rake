@@ -1,7 +1,6 @@
 require 'capybara/rails'
 require 'capybara/poltergeist'
 
-
 desc "Simulate load against Blogger application"
 task :load_test => :environment do
   4.times.map { Thread.new { browse } }.map(&:join)
