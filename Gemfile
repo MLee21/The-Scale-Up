@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'skylight'
 gem 'populator'
 gem 'capybara'
+gem 'poltergeist'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -39,5 +40,4 @@ end
 group :test do 
   gem 'rspec-rails'
   gem 'launchy'
-  gem 'poltergeist'
 end

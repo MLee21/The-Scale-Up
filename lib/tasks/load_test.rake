@@ -1,4 +1,3 @@
-require 'capybara/rails'
 require 'capybara/poltergeist'
 
 desc "Simulate load against Blogger application"
