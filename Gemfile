@@ -12,7 +12,8 @@ gem 'bootstrap_form', '~> 2.2.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem "skylight"
+gem 'skylight'
+gem 'populator'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -27,7 +28,6 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.4.0'
-  gem 'capybara'
 end
 group :production do
   gem 'rails_12factor', '0.0.2'
@@ -36,8 +36,8 @@ group :production do
 end
 
 group :test do 
+  gem 'capybara'
   gem 'rspec-rails'
   gem 'launchy'
   gem 'poltergeist'
-  gem 'selenium-webdriver'
 end

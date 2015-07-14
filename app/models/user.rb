@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
   validates :password_confirmation, presence: true, on: :create
-  validates :display_name, length: { in: 2..32 }, presence: true,
+  validates :display_name, 
+  # length: { in: 2..32 }, 
+                           presence: true,
                            uniqueness: true,
                            format: { with: /\A[a-zA-Z0-9\.\_\-]+\z/, },
                            exclusion: { in: %w(login logout tickets admin venue

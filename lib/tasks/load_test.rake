@@ -1,4 +1,6 @@
+require 'capybara/rails'
 require 'capybara/poltergeist'
+
 
 desc "Simulate load against Blogger application"
 task :load_test => :environment do
