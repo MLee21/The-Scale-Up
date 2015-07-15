@@ -4,38 +4,41 @@
     <th class="event-header-date">DATE</th>
     <th class="event-header-title">EVENT</th>
     <th class="event-header-locations">LOCATION/TIME</th>
+
   </tr>
-  <% @events.each do |event| %>
-  <tr class="event-row">
-    <td>
-      <div class="rotate event-category">
-        <p><%= event.category.name %></p>
-      </div>
-    </td>
-    <td>
-      <div class="event-date-group">
-        <p class="event-month"><%= event.month %></p>
-        <p class="event-date"><%= event.day_of_month %></p>
-        <p class="event-day"><%= event.day_of_week %></p>
-      </div>
-    </td>
-    <td class="event-info">
-      <p class="event-name"><%= link_to event.title, event %></a></p>
-    </td>
-    <td class="event-location">
-      <p class="event-venue">
-      <% if !current_page?(venue_path(event.venue))%>
-        <%= link_to(event.venue_name, venue_path(event.venue)) %>
+  <% cache('all_events') do %>
+    <% @events.each do |event| %>
+    <tr class="event-row">
+      <td>
+        <div class="rotate event-category">
+          <p><%= event.category.name %></p>
+        </div>
+      </td>
+      <td>
+        <div class="event-date-group">
+          <p class="event-month"><%= event.month %></p>
+          <p class="event-date"><%= event.day_of_month %></p>
+          <p class="event-day"><%= event.day_of_week %></p>
+        </div>
+      </td>
+      <td class="event-info">
+        <p class="event-name"><%= link_to event.title, event %></a></p>
+      </td>
+      <td class="event-location">
+        <p class="event-venue">
+        <% if !current_page?(venue_path(event.venue))%>
+          <%= link_to(event.venue_name, venue_path(event.venue)) %>
+        <% end %>
+        </p>
+        <p class="event-address"><a href="#"><%= event.venue_location %></a></p>
+        <p class="event-time"><%= event.formatted_time %></p>
+      </td>
+      <td class="event-tickets btn btn-default btn-lg"><%= link_to event do %>
+        <p><%= pluralize(@items.where(event_id: event.id).count, 'Ticket') %></p>
+        <p>Available</p>
+        <% end %>
+      </td>
+      </tr>
       <% end %>
-      </p>
-      <p class="event-address"><a href="#"><%= event.venue_location %></a></p>
-      <p class="event-time"><%= event.formatted_time %></p>
-    </td>
-    <td class="event-tickets btn btn-default btn-lg"><%= link_to event do %>
-      <p><%= pluralize(@items.where(event_id: event.id).count, 'Ticket') %></p>
-      <p>Available</p>
-      <% end %>
-    </td>
-    </tr>
-    <% end %>
+    <% end %>    
   </table>

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem "paperclip", "~> 4.2"
 gem 'faker'
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -16,6 +17,7 @@ gem 'skylight'
 gem 'populator'
 gem 'capybara'
 gem 'poltergeist'
+gem 'will_paginate', '~> 3.0.6'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

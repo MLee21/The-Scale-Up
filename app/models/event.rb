@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+
   validates :title, presence: true, allow_blank: false,
                     uniqueness: { case_sensitive: false }
   validates :approved, inclusion: [true, false]
