@@ -4,7 +4,7 @@ class Admin::EventsController < ApplicationController
   before_action :authorize
 
   def index
-    @events = Event.order(updated_at: :desc)
+    @events = Event.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 10)
   end
 
   def new

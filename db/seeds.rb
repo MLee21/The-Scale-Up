@@ -14,8 +14,8 @@ class Seed
     generate_categories
     generate_images
     generate_venues
-    generate_events
     generate_users
+    generate_events
     generate_items
     generate_admins
     generate_orders
@@ -73,9 +73,9 @@ class Seed
       event.date = date
       event.start_time = "#{date} 16:00:00"
       event.approved = [ true, false ]
-      event.image_id = rand(1..images)
-      event.venue_id = rand(1..venues)
-      event.category_id = rand(1..categories)
+      event.image_id = Image.all.sample.id
+      event.venue_id = Venue.all.sample.id
+      event.category_id = Category.all.sample.id
       puts "event #{count += 1} created"
     end
     puts "500,000 events generated"

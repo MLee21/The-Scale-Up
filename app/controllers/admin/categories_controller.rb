@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :authorize
   def index
     @categories = Category.all
-    @main_categories = Category.first(3)
+    @main_categories = Category.limit(3)
   end
 
   def edit

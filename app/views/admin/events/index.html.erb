@@ -18,6 +18,7 @@
     <th></th>
   </thead>
   <tbody>
+    <% cache("admin_events") do %>
     <% @events.each do |event| %>
       <tr>
         <td><%= image_tag event.image.img.url(:event_manage_list), class: "manage-item-img" %></td>
@@ -31,6 +32,8 @@
         <td><%= link_to "Edit", edit_admin_event_path(event), class: "btn btn-default" %></td>
         <td><%= link_to "Delete", admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"  %></td>
       </tr>
+    <% end %>
+    <%= will_paginate %>
     <% end %>
   </tbody>
 </table>
