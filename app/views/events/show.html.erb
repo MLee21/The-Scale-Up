@@ -4,6 +4,7 @@
       <tr>
         <td>
           <div class="event-date-group">
+            <% cache("single_event") do %>
             <p class="event-month"><%= @event.month %></p>
             <p class="event-date"><%= @event.day_of_month %></p>
             <p class="event-day"><%= @event.day_of_week %></p>
@@ -15,6 +16,7 @@
             <h4>
               <%= @event.formatted_time %>
               at <%= link_to(@event.venue_name, venue_path(@event.venue)) %>
+              <% end %>
             </h4>
           </span>
         </td>
