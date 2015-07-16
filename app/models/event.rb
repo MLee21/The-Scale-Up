@@ -1,5 +1,9 @@
 class Event < ActiveRecord::Base
 
+  after_create :clear_cache
+  after_save :clear_cache
+  after_destroy :clear_cache
+
   validates :title, presence: true, allow_blank: false,
                     uniqueness: { case_sensitive: false }
   validates :approved, inclusion: [true, false]
@@ -52,5 +56,9 @@ class Event < ActiveRecord::Base
 
   def venue_location
     venue.location
+  end
+
+  def clear_cache
+    Rails.cache.clear
   end
 end

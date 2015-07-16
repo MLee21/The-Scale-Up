@@ -1,5 +1,9 @@
 class Order < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+
+  after_create :clear_cache
+  after_save :clear_cache
+  after_destroy :clear_cache
   
   belongs_to :user
   has_many :order_items
@@ -72,5 +76,9 @@ class Order < ActiveRecord::Base
 
   def self.sorted
     Order.order(created_at: :desc)
+  end
+
+  def clear_cache
+    Rails.cache.clear
   end
 end

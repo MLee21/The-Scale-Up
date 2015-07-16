@@ -46,18 +46,20 @@
         </tr>
       </thead>
       <tbody>
-        <% @items.each do |item| %>
-          <tr>
-            <td class="vert-align"><%= link_to(item.seller, seller_store_path(item.seller)) %></td>
-            <td class="vert-align"><%= item.section %></td>
-            <td class="vert-align"><%= item.row %></td>
-            <td class="vert-align"><%= item.seat %></td>
-            <td class="vert-align delivery-meth"><%= item.delivery_method.capitalize %></td>
-            <td class="vert-align"><%= item.dollar_amount %></td>
-            <% unless current_user && (current_user.admin? || current_user.slug == item.user.slug) %>
-            <td class="vert-align"><%= button_to "Add to cart", cart_path(item_id: item.id), class: 'btn btn-default' %></td>
-            <% end %>
-          </tr>
+        <% cache("items") do %> 
+          <% @items.each do |item| %>
+            <tr>
+              <td class="vert-align"><%= link_to(item.seller, seller_store_path(item.seller)) %></td>
+              <td class="vert-align"><%= item.section %></td>
+              <td class="vert-align"><%= item.row %></td>
+              <td class="vert-align"><%= item.seat %></td>
+              <td class="vert-align delivery-meth"><%= item.delivery_method.capitalize %></td>
+              <td class="vert-align"><%= item.dollar_amount %></td>
+              <% unless current_user && (current_user.admin? || current_user.slug == item.user.slug) %>
+              <td class="vert-align"><%= button_to "Add to cart", cart_path(item_id: item.id), class: 'btn btn-default' %></td>
+              <% end %>
+            </tr>
+        <% end %>
         <% end %>
         <% end %>
       </tbody>

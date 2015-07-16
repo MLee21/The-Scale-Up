@@ -7,18 +7,18 @@
       <h3>Customer Details</h3>
       <table class="table table-hover">
         <tr>
-          <td><strong>Full Name:</strong><br /><%= @user.full_name %></td>
+          <td><strong>Full Name:</strong><br /><%= current_user.full_name %></td>
         </tr>
         <tr>
-          <td><strong>Display Name:</strong><br /><%= @user.display_name %></td>
+          <td><strong>Display Name:</strong><br /><%= current_user.display_name %></td>
         </tr>
         <tr>
           <td><strong>Address:</strong>
-            <br /><%= @user.street_1 %>
-            <% if @user.street_2 %>
-            <br /><%= @user.street_2 %>
+            <br /><%= current_user.street_1 %>
+            <% if current_user.street_2 %>
+            <br /><%= current_user.street_2 %>
             <% end %>
-            <br /><%= @user.city %> <%= @user.state %>, <%= @user.zipcode %>
+            <br /><%= current_user.city %> <%= current_user.state %>, <%= current_user.zipcode %>
           </td>
         </tr>
         <tr>
@@ -48,6 +48,7 @@
           </tr>
         </thead>
         <tbody>
+        <% cache("order_items") do %>
           <% @order.items.each do |item| %>
           <tr class="event-row">
             <td></td>
@@ -74,6 +75,7 @@
             <td class="vert-align"><%= item.dollar_amount %></td>
           </tr>
           <% end %>
+        <% end %>
         </tbody>
         <tfoot>
           <tr>

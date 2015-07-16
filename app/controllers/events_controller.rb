@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by(id: params[:id])
-    @items = @event.items.active.not_in_cart(session[:cart]).paginate(:page => params[:page], :per_page => 10)
+    @items = @event.items.active.paginate(:page => params[:page], :per_page => 10)
   end
 
   def random

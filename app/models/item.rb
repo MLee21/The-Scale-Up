@@ -2,6 +2,10 @@ class Item < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   DELIVERY_METHODS = %w(electronic physical)
 
+  after_create :clear_cache
+  after_save :clear_cache
+  after_destroy :clear_cache
+
   has_one  :category, through: :event
   has_many :order_items
   has_many :orders, through: :order_items
@@ -63,6 +67,10 @@ class Item < ActiveRecord::Base
       item.sold = true
       item.save
     end
+  end
+
+  def clear_cache
+    Rails.cache.clear
   end
 
 end
