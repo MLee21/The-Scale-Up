@@ -34,9 +34,12 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.4.0'
 end
 group :production do
-  gem 'rails_12factor', '0.0.2'
   gem 'rmagick', '2.13.2'
   gem 'fog'
+end
+
+group :production, :test do 
+  gem 'rails_12factor', '0.0.2'
 end
 
 group :test do 
